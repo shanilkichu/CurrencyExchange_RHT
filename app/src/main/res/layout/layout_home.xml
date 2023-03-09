@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false"
+    android:background="@color/black"
+    android:orientation="vertical">
+
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/black"
+            android:layout_marginTop="45sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <!-- guideline **************************************************** -->
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_display"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent=".5" />
+
+            <!-- refresh indicator ******************************************** -->
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/refreshIndicator"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                app:indicatorColor="?attr/colorPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:trackColor="@android:color/transparent" />
+
+            <!-- toggle button & separator ************************************ -->
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btn_toggle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:backgroundTint="?attr/colorPrimary"
+                android:contentDescription="@string/desc_toggle_currencies"
+                android:onClick="toggleEvent"
+                android:src="@drawable/ic_swap_vert"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_display"
+                app:layout_constraintEnd_toEndOf="@id/spinnerFrom"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline_display"
+                app:tint="?attr/colorOnPrimary" />
+
+            <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                android:id="@+id/spinnerFrom"
+                android:layout_width="200dp"
+                android:layout_height="45sp"
+                android:nestedScrollingEnabled="true"
+                app:layout_constraintBottom_toBottomOf="@+id/scrollViewTextFrom"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/scrollViewTextFrom" />
+
+            <LinearLayout
+                android:id="@+id/scrollViewTextFrom"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                app:layout_constraintBottom_toTopOf="@+id/guideline_display"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/spinnerFrom"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <EditText
+                    android:id="@+id/textFrom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:lines="1"
+                    android:padding="20sp"
+                    android:text="0.00" />
+            </LinearLayout>
+
+            <!-- divider ****************************************************** -->
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height=".75dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintBottom_toBottomOf="@id/guideline_display"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/guideline_display" />
+
+            <!-- bottom main_display ****************************************** -->
+
+            <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                android:id="@+id/spinnerTo"
+                android:layout_width="200dp"
+                android:layout_height="45sp"
+                app:layout_constraintBottom_toBottomOf="@+id/scrollViewTextTo"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/scrollViewTextTo" />
+
+            <LinearLayout
+                android:id="@+id/scrollViewTextTo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/spinnerTo"
+                app:layout_constraintTop_toTopOf="@+id/guideline_display">
+
+                <TextView
+                    android:id="@+id/textTo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:lines="1"
+                    android:padding="20sp"
+                    android:text="0.00"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</LinearLayout>
