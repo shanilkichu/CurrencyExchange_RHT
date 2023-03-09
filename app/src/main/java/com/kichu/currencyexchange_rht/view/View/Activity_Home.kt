@@ -155,6 +155,26 @@ class Activity_Home :AppCompatActivity(){
             }
 
         }
+
+
+        binding.textFrom.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                if (s!!.isNotEmpty()){
+                    val sum=((binding.textFrom.text.toString()).toDouble())*((binding.textTo.text.toString()).toDouble())
+                    binding.textTo.setText(""+sum)
+                }else{
+                    binding.textTo.setText(""+SelectedRate)
+                }
+
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+        })
+
         binding.spinnerTo.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
@@ -174,23 +194,6 @@ class Activity_Home :AppCompatActivity(){
 
         }
 
-        binding.textFrom.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                if (s!!.isNotEmpty()){
-                    val sum=((binding.textFrom.text.toString()).toDouble())*((binding.textTo.text.toString()).toDouble())
-                    binding.textTo.setText(""+sum)
-                }else{
-                    binding.textTo.setText(""+SelectedRate)
-                }
-
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            }
-        })
 
 
 
